@@ -13,8 +13,9 @@ import cv2
 import base64
 from PIL import Image
 from io import BytesIO
+import os
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
@@ -48,17 +49,19 @@ def postdata():
 	#
 	# img = np.expand_dims(img, axis=0)
 
-	weightspath = './cnn_model/'
+	weightspath = 'cnn_model/'
 	metaname = 'model.meta'
 	ckptname = 'model-8485'
+
+	my_path = os.path.abspath(os.path.dirname(__file__))
 
 	mapping = {'normal': 0, 'pneumonia': 1, 'COVID-19': 2}
 	inv_mapping = {0: 'normal', 1: 'pneumonia', 2: 'COVID-19'}
 
 	sess = tf.compat.v1.Session()
 	tf.compat.v1.get_default_graph()
-	saver = tf.compat.v1.train.import_meta_graph(os.path.join(args.weightspath, args.metaname))
-	saver.restore(sess, os.path.join(args.weightspath, args.ckptname))
+	saver = tf.train.import_meta_graph(os.path.join(my_path, weightspath, metaname))
+	saver.restore(sess, os.path.join(my_path, weightspath, ckptname))
 
 	graph = tf.compat.v1.get_default_graph()
 
@@ -85,4 +88,4 @@ def postdata():
 
 if __name__ == "__main__":
 
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='0.0.0.0', port=5000, debug=True)

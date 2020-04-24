@@ -31,20 +31,20 @@ class IntroDisplay extends React.Component {
 
   checkCXR()
   {
-    // API.post(`/run_cnn`, {imageDataURI: this.state.imageDataURI})
-    //   .then(res => {
-    //     this.setState({
-    //       proceedToCheck: true,
-    //       resultNotes: res.data.notes,
-    //       activatedImageDataURI: res.data.activatedImageDataURI
-    //     })
-    //   })
+    API.post(`/run_cnn`, {imageDataURI: this.state.imageDataURI})
+      .then(res => {
+        this.setState({
+          proceedToCheck: true,
+          resultNotes: res.data.notes,
+          activatedImageDataURI: res.data.activatedImageDataURI
+        })
+      })
 
-    this.setState({
-      proceedToCheck: true,
-      resultNotes: 'Test',
-      activatedImageDataURI: ''
-    })
+    // this.setState({
+    //   proceedToCheck: true,
+    //   resultNotes: 'Test',
+    //   activatedImageDataURI: ''
+    // })
   }
 
 
