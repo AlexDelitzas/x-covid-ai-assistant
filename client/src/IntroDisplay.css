@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #d5d9e1;
+}
+
+.page {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #3f4257;
+    margin-top: 30px;
+}
+
+pre {
+        max-width: 650px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0 0 5px 0px rgba(0,0,0,0.5);
+    border: 1px solid #b7c1c1;
+    margin-left: 50px;
+}
+
+p {
+        font-size: 15px;
+    text-align: center;
+    color: #7b7b7b;
+    margin: 30px;
+}
+.head {
+    margin: 40px 0 20px 40px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #353535;
+    border-bottom: 1px solid #a8b4cc;
+    padding-bottom: 5px;
+}
+
+div.table-title {
+   display: block;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+}
+
+.table-title h3 {
+   color: #fafafa;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+
+.button-to-start {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+button {
+  border-radius: 4px;
+  background-color: #324251;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  width: 160px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+button:hover span {
+  padding-right: 25px;
+}
+
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
