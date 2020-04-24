@@ -1,6 +1,25 @@
 version: '3'
 
 services:
+  ##############################
+  ### SETUP BACKEND CONTAINER ###
+  ##############################
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    expose:
+      - 5000
+    ports:
+      - 5000:5000
+    environment:
+      - PORT=5000
+    volumes:
+      - ./backend/src:/app/cnn/src
+      - ./backend/src/image-tmp:/app/cnn/image-tmp
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+
 
   ##############################
   ### SETUP CLIENT CONTAINER ###
@@ -22,3 +41,5 @@ services:
       - ./client/public:/app/client/public
       - /etc/localtime:/etc/localtime:ro
     restart: always
+    links:
+      - backend
