@@ -21,12 +21,27 @@ app = Flask(__name__)
 
 CORS(app)
 
+global sess
+global graph
+global image_tensor
+global pred_tensor
 
-# def load_cnn_model():
-# 	model = None
-# 	print('[*] Model loaded')
-#
-# 	return model
+my_path = os.path.abspath(os.path.dirname(__file__))
+
+weightspath = 'cnn_model/'
+metaname = 'model.meta'
+ckptname = 'model-8485'
+
+sess = tf.compat.v1.Session()
+tf.compat.v1.get_default_graph()
+saver = tf.train.import_meta_graph(os.path.join(my_path, weightspath, metaname))
+saver.restore(sess, os.path.join(my_path, weightspath, ckptname))
+
+graph = tf.compat.v1.get_default_graph()
+
+image_tensor = graph.get_tensor_by_name("input_1:0")
+pred_tensor = graph.get_tensor_by_name("dense_3/Softmax:0")
+
 
 @app.route('/')
 def index():
@@ -43,36 +58,11 @@ def postdata():
 	img_bytes = base64.b64decode(encoded)
 	img_init = Image.open(BytesIO(img_bytes))
 
-	# img = cv2.cvtColor(np.array(img_init), cv2.COLOR_BGR2RGB)
-
-	# img = cv2.resize(img, (224, 224))
-	#
-	# img = np.expand_dims(img, axis=0)
-
-	weightspath = 'cnn_model/'
-	metaname = 'model.meta'
-	ckptname = 'model-8485'
-
-	my_path = os.path.abspath(os.path.dirname(__file__))
 
 	mapping = {'normal': 0, 'pneumonia': 1, 'COVID-19': 2}
 	inv_mapping = {0: 'normal', 1: 'pneumonia', 2: 'COVID-19'}
 
-	sess = tf.compat.v1.Session()
-	tf.compat.v1.get_default_graph()
-	saver = tf.train.import_meta_graph(os.path.join(my_path, weightspath, metaname))
-	saver.restore(sess, os.path.join(my_path, weightspath, ckptname))
 
-	graph = tf.compat.v1.get_default_graph()
-
-	image_tensor = graph.get_tensor_by_name("input_1:0")
-	pred_tensor = graph.get_tensor_by_name("dense_3/Softmax:0")
-# 	parser = argparse.ArgumentParser(description='COVID-Net Inference')
-# parser.add_argument('--weightspath', default='C:/Users/Vasilis/Downloads/COVIDNet-CXR-Large/', type=str, help='Path to output folder')
-# parser.add_argument('--metaname', default='model.meta', type=str, help='Name of ckpt meta file')
-# parser.add_argument('--ckptname', default='model-8485', type=str, help='Name of model ckpts')
-# parser.add_argument('--imagepath', default='C:/Users/Vasilis/Downloads/keras-covid-19/dataset/covid/ryct.2020200028.fig1a.jpeg', type=str, help='Full path to image to be inferenced')
-	# plt.imsave('./image-tmp/original_resized.png', img)
 	x = cv2.cvtColor(np.array(img_init), cv2.COLOR_BGR2RGB)
 	h, w, c = x.shape
 	x = x[int(h/6):, :]
