@@ -82,7 +82,7 @@ class IntroDisplay extends React.Component {
           <ImageUploader style={{ maxWidth: '500px', margin: "20px auto" }}
              withPreview={true}
              onChange={this.handleImageUpload}
-             imgExtension={['.jpg', '.png']}
+             imgExtension={['.jpg', '.png', '.jpeg']}
              maxFileSize={5242880}
              label='Max file size: 5mb, accepted: jpg|png'
              singleImage={true}
