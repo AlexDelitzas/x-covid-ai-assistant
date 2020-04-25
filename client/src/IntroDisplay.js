@@ -35,8 +35,7 @@ class IntroDisplay extends React.Component {
       .then(res => {
         this.setState({
           proceedToCheck: true,
-          resultNotes: res.data.notes,
-          activatedImageDataURI: res.data.activatedImageDataURI
+          resultNotes: res.data.notes
         })
       })
 

@@ -46,12 +46,15 @@ class ResultDisplay extends React.Component {
           <div className="notes">
             {this.state.resultNotes}
           </div>
-          <div className="button-title">
-            Predictive image regions
-          </div>
-          <div className="button-regions">
-            <button type="button" onClick={this.showHideActivated}>Show&#47;Hide</button>
-          </div>
+          {
+            // <div className="button-title">
+            //   Predictive image regions
+            // </div>
+            // <div className="button-regions">
+            //   <button type="button" onClick={this.showHideActivated}>Show&#47;Hide</button>
+            // </div>
+          }
+
         </div>
       </div>
     )
