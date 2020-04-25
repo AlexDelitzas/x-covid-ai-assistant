@@ -1,8 +1,9 @@
 import React from 'react'
 import ImageUploader from 'react-images-upload'
 import API from './api.js'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import './IntroDisplay.css'
+
 
 import ResultLoading from './ResultLoading.js'
 
@@ -99,6 +100,9 @@ class IntroDisplay extends React.Component {
           <h1>X-COVID AI Assistant</h1>
           <p>A tool to detect signs of COVID-19 presence from Chest X-Rays using Deep Learning</p>
           <div className="head">Upload a Chest X-Ray</div>
+          <div className="sample-images-note">
+            You can find example images to use <Link to="/samples">here</Link>.
+          </div>
           <ImageUploader style={{ maxWidth: '500px', margin: "20px auto" }}
              withPreview={true}
              onChange={this.handleImageUpload}
@@ -112,7 +116,6 @@ class IntroDisplay extends React.Component {
             ? checkButton
             : null
           }
-
 
         </div>
       )
