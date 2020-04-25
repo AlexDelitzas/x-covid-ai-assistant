@@ -2,12 +2,12 @@ version: '3'
 
 services:
   ##############################
-  ### SETUP BACKEND CONTAINER ###
+  ### SETUP SERVER CONTAINER ###
   ##############################
-  backend:
+  server:
     build:
       context: ./backend
-    container_name: backend
+    container_name: server
     expose:
       - 5000
     ports:
@@ -42,4 +42,19 @@ services:
       - /etc/localtime:/etc/localtime:ro
     restart: always
     links:
-      - backend
+      - server
+
+  #############################
+  ### SETUP NGINX CONTAINER ###
+  #############################
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      -  /etc/localtime:/etc/localtime:ro
+    command: [nginx-debug, '-g', 'daemon off;']
+    ports:
+      - 80:80
+    links:
+      - client
