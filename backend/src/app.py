@@ -51,18 +51,18 @@ def predict_proba(X):
 
 def explain_image_with_lime(input_image, label):
 	print('I am here')
-	plt.rcParams['figure.figsize'] = [10, 5]
+	# plt.rcParams['figure.figsize'] = [10, 5]
 
 	explainer = lime_image.LimeImageExplainer()
 	explanation = explainer.explain_instance(input_image, predict_proba, top_labels=2, hide_color=None, num_samples=100)
 
-	fig = plt.figure(figsize=[11.3, 8.8])
-	plt.subplot(121)
-	plt.imshow(input_image)
+	# fig = plt.figure(figsize=[11.3, 8.8])
+	# plt.subplot(121)
+	# plt.imshow(input_image)
 
-	plt.subplot(122)
+	# plt.subplot(122)
 	temp, mask = explanation.get_image_and_mask(label, positive_only=False, num_features=20, hide_rest=False)
-	plt.imshow(mark_boundaries(temp, mask))
+	# plt.imshow(mark_boundaries(temp, mask))
 
 
 	output_path_lime = './image-tmp/lime_output.png'
