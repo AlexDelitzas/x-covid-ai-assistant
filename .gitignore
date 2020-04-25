@@ -23,3 +23,6 @@ yarn-error.log*
 
 # CNN model 
 cnn_model/
+
+# temporary images
+**/image-tmp/*.png
