@@ -7,8 +7,8 @@ class ResultLoading extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: true,
-      message: ''
+      loading: this.props.loading,
+      internalError: this.props.internalError
     }
 
   }
@@ -16,7 +16,7 @@ class ResultLoading extends React.Component {
   render() {
 
     let content
-    if (this.state.loading) {
+    if (!this.props.internalError) {
       content = (
         <div className="loading-content">
           <Loader
@@ -32,7 +32,7 @@ class ResultLoading extends React.Component {
     else {
       content = (
         <div className="loading-content">
-          'An error occurred'
+          An unknown server error occurred. We will keep the logs to further investigate this error.
         </div>
       )
     }

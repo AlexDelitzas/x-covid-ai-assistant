@@ -13,11 +13,11 @@ from PIL import Image
 from io import BytesIO
 import os
 
-import matplotlib.pyplot as plt
-from lime import lime_image
-from lime import lime_base
-from lime.wrappers.scikit_image import SegmentationAlgorithm
-from skimage.segmentation import mark_boundaries
+# import matplotlib.pyplot as plt
+# from lime import lime_image
+# from lime import lime_base
+# from lime.wrappers.scikit_image import SegmentationAlgorithm
+# from skimage.segmentation import mark_boundaries
 
 app = Flask(__name__)
 

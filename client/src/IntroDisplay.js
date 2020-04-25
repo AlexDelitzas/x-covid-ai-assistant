@@ -17,7 +17,8 @@ class IntroDisplay extends React.Component {
       imageUploaded: false,
       proceedToResult: false,
       resultNotes: null,
-      loading: false
+      loading: false,
+      internalError: false
     }
     this.handleImageUpload = this.handleImageUpload.bind(this)
     this.checkCXR = this.checkCXR.bind(this)
@@ -45,6 +46,12 @@ class IntroDisplay extends React.Component {
           resultNotes: res.data.notes
         })
       })
+      .catch(err => {
+        console.log('An error occurred')
+        this.setState({
+          internalError: true
+        })
+      })
 
     // this.setState({
     //   proceedToResult: true,
@@ -64,8 +71,9 @@ class IntroDisplay extends React.Component {
     )
 
     if (this.state.loading) {
+
       return (
-        <ResultLoading loading={true}/>
+        <ResultLoading loading={true} internalError={this.state.internalError}/>
       )
     }
 
