@@ -15,22 +15,12 @@ from PIL import Image
 from io import BytesIO
 import os
 
-# import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
 CORS(app)
 
 
-# def load_cnn_model():
-# 	model = None
-# 	print('[*] Model loaded')
-#
-# 	return model
-
-# @app.route('/')
-# def index():
-# 	return "Flask server"
 
 @app.route('/api/run_cnn', methods = ['POST'])
 def postdata():
@@ -43,11 +33,6 @@ def postdata():
 	img_bytes = base64.b64decode(encoded)
 	img_init = Image.open(BytesIO(img_bytes))
 
-	# img = cv2.cvtColor(np.array(img_init), cv2.COLOR_BGR2RGB)
-
-	# img = cv2.resize(img, (224, 224))
-	#
-	# img = np.expand_dims(img, axis=0)
 
 	weightspath = 'cnn_model/'
 	metaname = 'model.meta'
@@ -67,12 +52,7 @@ def postdata():
 
 	image_tensor = graph.get_tensor_by_name("input_1:0")
 	pred_tensor = graph.get_tensor_by_name("dense_3/Softmax:0")
-# 	parser = argparse.ArgumentParser(description='COVID-Net Inference')
-# parser.add_argument('--weightspath', default='C:/Users/Vasilis/Downloads/COVIDNet-CXR-Large/', type=str, help='Path to output folder')
-# parser.add_argument('--metaname', default='model.meta', type=str, help='Name of ckpt meta file')
-# parser.add_argument('--ckptname', default='model-8485', type=str, help='Name of model ckpts')
-# parser.add_argument('--imagepath', default='C:/Users/Vasilis/Downloads/keras-covid-19/dataset/covid/ryct.2020200028.fig1a.jpeg', type=str, help='Full path to image to be inferenced')
-	# plt.imsave('./image-tmp/original_resized.png', img)
+
 	x = cv2.cvtColor(np.array(img_init), cv2.COLOR_BGR2RGB)
 	h, w, c = x.shape
 	x = x[int(h/6):, :]
