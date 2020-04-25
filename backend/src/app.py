@@ -32,7 +32,7 @@ CORS(app)
 # def index():
 # 	return "Flask server"
 
-@app.route('/run_cnn', methods = ['POST'])
+@app.route('/api/run_cnn', methods = ['POST'])
 def postdata():
 
 	data = request.get_json()
