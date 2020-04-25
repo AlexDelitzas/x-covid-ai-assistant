@@ -4,6 +4,8 @@ import API from './api.js'
 import { Redirect } from 'react-router-dom'
 import './IntroDisplay.css'
 
+import ResultLoading from './ResultLoading.js'
+
 
 class IntroDisplay extends React.Component {
 
@@ -13,8 +15,9 @@ class IntroDisplay extends React.Component {
       imageDataURI: null,
       activatedImageDataURI: null,
       imageUploaded: false,
-      proceedToCheck: false,
-      resultNotes: null
+      proceedToResult: false,
+      resultNotes: null,
+      loading: false
     }
     this.handleImageUpload = this.handleImageUpload.bind(this)
     this.checkCXR = this.checkCXR.bind(this)
@@ -31,16 +34,20 @@ class IntroDisplay extends React.Component {
 
   checkCXR()
   {
+    this.setState({
+      loading: true
+    })
     API.post(`/run_cnn`, {imageDataURI: this.state.imageDataURI})
       .then(res => {
         this.setState({
-          proceedToCheck: true,
+          proceedToResult: true,
+          loading: false,
           resultNotes: res.data.notes
         })
       })
 
     // this.setState({
-    //   proceedToCheck: true,
+    //   proceedToResult: true,
     //   resultNotes: 'Test',
     //   activatedImageDataURI: ''
     // })
@@ -56,7 +63,13 @@ class IntroDisplay extends React.Component {
       </div>
     )
 
-    if (this.state.proceedToCheck)
+    if (this.state.loading) {
+      return (
+        <ResultLoading loading={true}/>
+      )
+    }
+
+    else if (this.state.proceedToResult)
     {
       return (
         <Redirect push to={{
@@ -91,6 +104,8 @@ class IntroDisplay extends React.Component {
             ? checkButton
             : null
           }
+
+
         </div>
       )
     }
