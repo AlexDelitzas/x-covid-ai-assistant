@@ -9,11 +9,11 @@ services:
       context: ./backend
     container_name: server
     expose:
-      - 5000
+      - 80
     ports:
-      - 5000:5000
+      - 80:80
     environment:
-      - PORT=5000
+      - PORT=80
     volumes:
       - ./backend/src:/app/cnn/src
       - ./backend/src/image-tmp:/app/cnn/image-tmp
