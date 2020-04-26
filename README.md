@@ -4,11 +4,11 @@ A Web Application to detect signs of COVID-19 presence from Chest X-Rays using D
 
 ## Motivation
 
-With shortages and delays in PCR tests, chest x-rays have become one of the fastest and most affordable ways for doctors to triage patients. In many hospitals, patients often have to wait six hours or more for a specialist to look at their x-rays. If an emergency room doctor could get an initial reading from an AI-based tool, it could dramatically shrink that wait time. Before the pandemic, health-care AI was already a booming area of research. Deep learning, in particular, has demonstrated impressive results for analyzing medical images to identify diseases like breast and lung cancer or glaucoma at least as accurately as human specialists. Therefore, what we envision through our Project, is to follow this paradigm, and equip doctors with a powerful AI tool in the fight against COVID-19.
+With shortages and delays in PCR tests, chest x-rays have become one of the fastest and most affordable ways for doctors to triage patients. In many hospitals, patients often have to wait six hours or more for a specialist to look at their x-rays. If an emergency room doctor could get an initial reading from an AI-based tool, it could dramatically shrink that wait time. Before the pandemic, health-care AI was already a booming area of research. Deep learning, in particular, has demonstrated impressive results for analyzing medical images to identify diseases like breast and lung cancer or glaucoma at least as accurately as human specialists.
 
 ## Acknowledgements
 
-We would like to thank deeply the team behind [COVID-Net Open Source Initiative](https://github.com/lindawangg/COVID-Net). Our project is an attempt to incorporate COVID-Net into the heart of a web-based application that could be used by doctors as a guide on the examination process and patient triage.
+We would like to thank deeply the team behind [COVID-Net Open Source Initiative](https://github.com/lindawangg/COVID-Net). Our project is an attempt to incorporate COVID-Net into the heart of a web-based application that could be used by health care providers as a supportive tool on the examination process and patient triage.
 
 ## Demo
 
