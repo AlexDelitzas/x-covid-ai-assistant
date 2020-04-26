@@ -4,11 +4,11 @@ A Web Application to detect signs of COVID-19 presence from Chest X-Rays using D
 
 ## How to use
 
-**Step 1**: Open the application via a browser
+**Step 1**: Open the application via a web browser
 
 ![](media/app1.png)
 
-**Step 2**: Upload the Chest X-Ray that you want to check. For testing purposes, you can a sample image that we provide.
+**Step 2**: Upload the Chest X-Ray that you want to check. For testing purposes, you can use a sample image that we provide.
 
 ![](media/app2.png)
 
