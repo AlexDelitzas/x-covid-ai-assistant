@@ -8,7 +8,7 @@ With shortages and delays in PCR tests, chest x-rays have become one of the fast
 
 ## Acknowledgements
 
-We would like to thank deeply the team behind [COVID-Net Open Source Initiative](https://github.com/lindawangg/COVID-Net). Our project is an attempt to incorporate COVID-Net into the heart of a web-based application that could be used by doctors as a guide on the examination process and triage.
+We would like to thank deeply the team behind [COVID-Net Open Source Initiative](https://github.com/lindawangg/COVID-Net). Our project is an attempt to incorporate COVID-Net into the heart of a web-based application that could be used by doctors as a guide on the examination process and patient triage.
 
 ## Demo
 
