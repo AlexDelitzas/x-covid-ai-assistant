@@ -8,26 +8,26 @@ class ResultDisplay extends React.Component {
     this.state = {
       imageDataURI: this.props.location.state.imageDataURI,
       resultNotes: this.props.location.state.resultNotes,
-      activatedImageDataURI: this.props.location.state.activatedImageDataURI,
+      // activatedImageDataURI: this.props.location.state.activatedImageDataURI,
       imageShown: this.props.location.state.imageDataURI
     }
 
-    this.showHideActivated = this.showHideActivated.bind(this)
+    // this.showHideActivated = this.showHideActivated.bind(this)
   }
 
-  showHideActivated() {
-    if (this.state.imageShown === this.state.imageDataURI) {
-      this.setState({
-        imageShown: this.state.activatedImageDataURI
-      })
-    }
-    else {
-      this.setState({
-        imageShown: this.state.imageDataURI
-      })
-    }
-
-  }
+  // showHideActivated() {
+  //   if (this.state.imageShown === this.state.imageDataURI) {
+  //     this.setState({
+  //       imageShown: this.state.activatedImageDataURI
+  //     })
+  //   }
+  //   else {
+  //     this.setState({
+  //       imageShown: this.state.imageDataURI
+  //     })
+  //   }
+  //
+  // }
 
   render() {
 
@@ -46,12 +46,15 @@ class ResultDisplay extends React.Component {
           <div className="notes">
             {this.state.resultNotes}
           </div>
-          <div className="button-title">
-            Predictive image regions
-          </div>
-          <div className="button-regions">
-            <button type="button" onClick={this.showHideActivated}>Show&#47;Hide</button>
-          </div>
+          {
+            // <div className="button-title">
+            //   Predictive image regions
+            // </div>
+            // <div className="button-regions">
+            //   <button type="button" onClick={this.showHideActivated}>Show&#47;Hide</button>
+            // </div>
+          }
+
         </div>
       </div>
     )

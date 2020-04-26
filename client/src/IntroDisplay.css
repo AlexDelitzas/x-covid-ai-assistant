@@ -40,6 +40,13 @@ p {
     padding-bottom: 5px;
 }
 
+
+.sample-images-note {
+  margin: 20px 0 30px 40px;
+  font-size: 14px;
+  color: #323232;
+}
+
 div.table-title {
    display: block;
   margin: auto;

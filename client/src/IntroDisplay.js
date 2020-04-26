@@ -1,8 +1,11 @@
 import React from 'react'
 import ImageUploader from 'react-images-upload'
 import API from './api.js'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import './IntroDisplay.css'
+
+
+import ResultLoading from './ResultLoading.js'
 
 
 class IntroDisplay extends React.Component {
@@ -13,8 +16,10 @@ class IntroDisplay extends React.Component {
       imageDataURI: null,
       activatedImageDataURI: null,
       imageUploaded: false,
-      proceedToCheck: false,
-      resultNotes: null
+      proceedToResult: false,
+      resultNotes: null,
+      loading: false,
+      internalError: false
     }
     this.handleImageUpload = this.handleImageUpload.bind(this)
     this.checkCXR = this.checkCXR.bind(this)
@@ -31,17 +36,26 @@ class IntroDisplay extends React.Component {
 
   checkCXR()
   {
+    this.setState({
+      loading: true
+    })
     API.post(`/run_cnn`, {imageDataURI: this.state.imageDataURI})
       .then(res => {
         this.setState({
-          proceedToCheck: true,
-          resultNotes: res.data.notes,
-          activatedImageDataURI: res.data.activatedImageDataURI
+          proceedToResult: true,
+          loading: false,
+          resultNotes: res.data.notes
+        })
+      })
+      .catch(err => {
+        console.log('An error occurred')
+        this.setState({
+          internalError: true
         })
       })
 
     // this.setState({
-    //   proceedToCheck: true,
+    //   proceedToResult: true,
     //   resultNotes: 'Test',
     //   activatedImageDataURI: ''
     // })
@@ -57,7 +71,14 @@ class IntroDisplay extends React.Component {
       </div>
     )
 
-    if (this.state.proceedToCheck)
+    if (this.state.loading) {
+
+      return (
+        <ResultLoading loading={true} internalError={this.state.internalError}/>
+      )
+    }
+
+    else if (this.state.proceedToResult)
     {
       return (
         <Redirect push to={{
@@ -79,6 +100,9 @@ class IntroDisplay extends React.Component {
           <h1>X-COVID AI Assistant</h1>
           <p>A tool to detect signs of COVID-19 presence from Chest X-Rays using Deep Learning</p>
           <div className="head">Upload a Chest X-Ray</div>
+          <div className="sample-images-note">
+            You can find example images to use <Link to="/samples">here</Link>.
+          </div>
           <ImageUploader style={{ maxWidth: '500px', margin: "20px auto" }}
              withPreview={true}
              onChange={this.handleImageUpload}
@@ -92,6 +116,7 @@ class IntroDisplay extends React.Component {
             ? checkButton
             : null
           }
+
         </div>
       )
     }
