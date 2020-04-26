@@ -2,6 +2,23 @@
 
 A Web Application to detect signs of COVID-19 presence from Chest X-Rays using Deep Learning.
 
+## How to use
+
+**Step 1**: Open the application via a browser
+
+![](media/app1.png)
+
+**Step 2**: Upload the Chest X-Ray that you want to check. For testing purposes, you can a sample image that we provide.
+
+![](media/app2.png)
+
+**Step 3**: Click the "Check" button and wait for the evaluation process to complete (usually this takes less than 10 seconds)
+
+![](media/app3.png)
+
+**Step 4**: The model's prediction is ready!
+
+![](media/app4.png)
 
 ## Prerequisites
 
