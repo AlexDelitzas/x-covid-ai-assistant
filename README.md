@@ -6,19 +6,26 @@ A Web Application to detect signs of COVID-19 presence from Chest X-Rays using D
 
 **Step 1**: Open the application via a web browser
 
-![](media/app1.png)
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AlexDelitzas/x-covid-ai-assistant/master/media/app1.png" width="90%">
+</p>
 
 **Step 2**: Upload the Chest X-Ray that you want to check. For testing purposes, you can use a sample image that we provide.
 
-![](media/app2.png)
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AlexDelitzas/x-covid-ai-assistant/master/media/app2.png" width="90%">
+</p>
 
 **Step 3**: Click the "Check" button and wait for the evaluation process to complete (usually this takes less than 10 seconds)
-
-![](media/app3.png)
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AlexDelitzas/x-covid-ai-assistant/master/media/app3.png" width="90%">
+</p>
 
 **Step 4**: The model's prediction is ready!
 
-![](media/app4.png)
+<p align="center">
+    <img src="https://raw.githubusercontent.com/AlexDelitzas/x-covid-ai-assistant/master/media/app4.png" width="90%">
+</p>
 
 ## Prerequisites
 
