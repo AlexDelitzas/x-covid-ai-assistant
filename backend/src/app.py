@@ -13,12 +13,6 @@ from PIL import Image
 from io import BytesIO
 import os
 
-# import matplotlib.pyplot as plt
-# from lime import lime_image
-# from lime import lime_base
-# from lime.wrappers.scikit_image import SegmentationAlgorithm
-# from skimage.segmentation import mark_boundaries
-
 app = Flask(__name__)
 
 CORS(app)
@@ -43,39 +37,6 @@ graph = tf.compat.v1.get_default_graph()
 
 image_tensor = graph.get_tensor_by_name("input_1:0")
 pred_tensor = graph.get_tensor_by_name("dense_3/Softmax:0")
-
-# def predict_proba(X):
-#
-#     out = sess.run(pred_tensor, feed_dict={image_tensor: X})
-#     return out
-#
-# def explain_image_with_lime(input_image, label):
-# 	print('I am here')
-# 	# plt.rcParams['figure.figsize'] = [10, 5]
-#
-# 	explainer = lime_image.LimeImageExplainer()
-# 	explanation = explainer.explain_instance(input_image, predict_proba, top_labels=2, hide_color=None, num_samples=100)
-#
-# 	# fig = plt.figure(figsize=[11.3, 8.8])
-# 	# plt.subplot(121)
-# 	# plt.imshow(input_image)
-#
-# 	# plt.subplot(122)
-# 	temp, mask = explanation.get_image_and_mask(label, positive_only=False, num_features=20, hide_rest=False)
-# 	# plt.imshow(mark_boundaries(temp, mask))
-#
-#
-# 	output_path_lime = './image-tmp/lime_output.png'
-# 	plt.imsave(output_path_lime, mark_boundaries(temp, mask))
-#
-# 	with open(output_path_lime, "rb") as imageFile:
-# 		imageDataURI = str(base64.b64encode(imageFile.read()))
-# 		imageDataURI = imageDataURI[2:]
-# 		imageDataURI = 'data:image/png;base64,' + str(imageDataURI[:-1])
-#
-# 	# plt.show()
-#
-# 	return imageDataURI
 
 @app.route('/api/run_cnn', methods = ['POST'])
 def postdata():
@@ -105,7 +66,6 @@ def postdata():
 	label = np.argmax(model_out, axis=1)[0]
 	label_name = inv_mapping[label]
 
-	# imageDataURI = explain_image_with_lime(x, label)
 	print(model_out)
 
 	if label_name == 'COVID-19':
@@ -115,7 +75,7 @@ def postdata():
 	else:
 		message = 'There are potential signs of pneumonia on the Chest X-Ray. It is advised that the patient receives further examination.'
 
-	return json.dumps({"notes": message})#, "activatedImageDataURI": imageDataURI})
+	return json.dumps({"notes": message})
 
 if __name__ == "__main__":
 

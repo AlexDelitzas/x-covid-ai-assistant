@@ -54,11 +54,6 @@ class IntroDisplay extends React.Component {
         })
       })
 
-    // this.setState({
-    //   proceedToResult: true,
-    //   resultNotes: 'Test',
-    //   activatedImageDataURI: ''
-    // })
   }
 
 
