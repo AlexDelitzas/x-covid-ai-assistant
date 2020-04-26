@@ -74,7 +74,7 @@ Add a *.env* file in the root folder of the project and set the following variab
 | :-------------: | :-------------: |
 | BASEURL | Base URL that is used for the requests |
 
-### Step 2 - Run
+### Step 3 - Run
 
 Start:
 
