@@ -10,6 +10,10 @@ With shortages and delays in PCR tests, chest x-rays have become one of the fast
 
 We would like to thank deeply the team behind [COVID-Net Open Source Initiative](https://github.com/lindawangg/COVID-Net). Our project is an attempt to incorporate COVID-Net into the heart of a web-based application that could be used by doctors as a guide on the examination process and triage.
 
+## Demo
+
+A live demo of the web application is currently running here: http://xcovid-ai-assistant.cf
+
 ## How to use
 
 **Step 1**: Open the application via a web browser
