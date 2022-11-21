@@ -1,6 +1,6 @@
 matplotlib
 numpy
-tensorflow==1.15.2
+tensorflow==2.9.3
 keras==2.2.5
 flask
 opencv-python
